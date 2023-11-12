@@ -15,5 +15,10 @@
   },
   "scripts": {
     "start": "cds-serve"
+  },
+  "cds": {
+    "features": {
+      "fiori_preview": true
+    }
   }
 }
