@@ -6,15 +6,12 @@
 	xmlns:table="sap.ui.table"
 	xmlns:l="sap.ui.layout"
 	>
-	<Shell >
 
-		<Page title="dsfarfasdf">
+	<Shell >
+		<Page>
 			<content>
-	
-				<Text text="ssss"></Text>
 				<table:Table
 					   id="bookshop"
-						rowActionCount="2"
 						rows="{path:'/Books'}"
 						enableBusyIndicator="true"
 						selectionMode="None"
@@ -29,12 +26,12 @@
 								<Button icon="sap-icon://add" type="Emphasized" text="New" press=".onCreate"></Button>
 							</OverflowToolbar>
 						</table:extension>
-									<table:columns>
+						<table:columns>
 							<table:Column>
 								<Label text="ID" />
 								<table:template>
 									<Text
-										text="{id}"
+										text="{ID}"
 										wrapping="false"
 									/>
 								</table:template>
@@ -43,7 +40,7 @@
 								<Label text="Title" />
 								<table:template>
 									<Text
-										text="{name}"
+										text="{title}"
 										wrapping="false"
 									/>
 								</table:template>
@@ -52,7 +49,7 @@
 								<Label text="Author ID" />
 								<table:template>
 									<Text
-										text="{group}"
+										text="{author_ID}"
 										wrapping="false"
 									/>
 								</table:template>
@@ -61,7 +58,7 @@
 								<Label text="Stock" />
 								<table:template>
 									<Text
-										text="{hall}"
+										text="{stock}"
 										wrapping="false"
 									/>
 								</table:template>
@@ -88,9 +85,8 @@
 							</table:Column>
 						</table:columns>
 				</table:Table>
-	
 			</content>
-	
 			</Page>
-	</Shell>
+	</Shell>	
+
 </mvc:View>
