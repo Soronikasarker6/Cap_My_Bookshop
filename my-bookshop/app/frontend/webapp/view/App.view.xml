@@ -1,0 +1,96 @@
+<mvc:View
+	controllerName="cap.app.controller.App"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:table="sap.ui.table"
+	xmlns:l="sap.ui.layout"
+	>
+	<Shell >
+
+		<Page title="dsfarfasdf">
+			<content>
+	
+				<Text text="ssss"></Text>
+				<table:Table
+					   id="bookshop"
+						rowActionCount="2"
+						rows="{path:'/Books'}"
+						enableBusyIndicator="true"
+						selectionMode="None"
+						paste="onPaste"
+						ariaLabelledBy="title"
+					>
+						<table:extension >
+							<OverflowToolbar >
+			
+								<Title text="{i18n>appTitle}"></Title>
+								<ToolbarSpacer ></ToolbarSpacer>
+								<Button icon="sap-icon://add" type="Emphasized" text="New" press=".onCreate"></Button>
+							</OverflowToolbar>
+						</table:extension>
+									<table:columns>
+							<table:Column>
+								<Label text="ID" />
+								<table:template>
+									<Text
+										text="{id}"
+										wrapping="false"
+									/>
+								</table:template>
+							</table:Column>
+							<table:Column>
+								<Label text="Title" />
+								<table:template>
+									<Text
+										text="{name}"
+										wrapping="false"
+									/>
+								</table:template>
+							</table:Column>
+							<table:Column>
+								<Label text="Author ID" />
+								<table:template>
+									<Text
+										text="{group}"
+										wrapping="false"
+									/>
+								</table:template>
+							</table:Column>
+							<table:Column>
+								<Label text="Stock" />
+								<table:template>
+									<Text
+										text="{hall}"
+										wrapping="false"
+									/>
+								</table:template>
+							</table:Column>
+							<table:Column
+								width="15em"
+								hAlign="Center"
+							>
+								<Label text="Action" />
+								<table:template>
+									<l:HorizontalLayout>
+										<Button
+											icon="sap-icon://edit"
+											press="onUpdate"
+										/>
+										<HBox width="4px" />
+										<Button
+											type="Reject"
+											icon="sap-icon://delete"
+											press="onDelete"
+										/>
+									</l:HorizontalLayout>
+								</table:template>
+							</table:Column>
+						</table:columns>
+				</table:Table>
+	
+			</content>
+	
+			</Page>
+	</Shell>
+</mvc:View>
