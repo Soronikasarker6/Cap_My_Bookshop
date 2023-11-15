@@ -1,6 +1,5 @@
 import Button from "sap/m/Button";
 import Dialog from "sap/m/Dialog";
-import Input from "sap/m/Input";
 import MessageBox from "sap/m/MessageBox";
 import MessageToast from "sap/m/MessageToast";
 import Event from "sap/ui/base/Event";
@@ -12,13 +11,8 @@ import Controller from "sap/ui/core/mvc/Controller";
 import View from "sap/ui/core/mvc/View";
 import JSONModel from "sap/ui/model/json/JSONModel";
 import Context from "sap/ui/model/odata/v4/Context";
-import ODataListBinding from "sap/ui/model/odata/v4/ODataListBinding";
 import ODataModel from "sap/ui/model/odata/v4/ODataModel";
 import Row from "sap/ui/table/Row";
-import Table from "sap/ui/table/Table";
-import ColorPickerDisplayMode from "sap/ui/unified/ColorPickerDisplayMode";
-import ColorPickerPopover from "sap/ui/unified/ColorPickerPopover";
-import { ColorPickerMode } from "sap/ui/unified/library";
 
 /**
  * @namespace cap.app.controller
@@ -44,7 +38,7 @@ export default class App extends Controller {
     if (!this.dataDialog) {
       this.dataDialog = Fragment.load({
         id: this.view.getId(),
-        name: "cap.app.view.fragment.Data",
+        name: "cap.app.view.fragment.Book",
         controller: this,
       }).then(function (dialog: Control | Control[]) {
         that.view.addDependent(dialog as UI5Element);
@@ -112,10 +106,20 @@ export default class App extends Controller {
             .setProperty("ID", books.ID == "" ? null : books.ID)
             .then(
               () => {
-                this.onClose(event);
-                that.getOwnerComponent()?.getModel()?.refresh();
-                BusyIndicator.hide();
-                MessageToast.show("Data has been saved");
+                this.rowContext.setProperty("author_ID", books.author_ID).then(
+                  () => {
+                    this.rowContext.setProperty("stock", books.stock).then(
+                      () => {
+                        this.onClose(event);
+                        that.getOwnerComponent()?.getModel()?.refresh();
+                        BusyIndicator.hide();
+                        MessageToast.show("Data has been saved");
+                      },
+                      (err) => that.onCloseError(event, err)
+                    );
+                  },
+                  (err) => that.onCloseError(event, err)
+                );
               },
               (err) => that.onCloseError(event, err)
             );
@@ -137,7 +141,7 @@ export default class App extends Controller {
     if (!this.dataDialog) {
       this.dataDialog = Fragment.load({
         id: this.view?.getId(),
-        name: "cap.app.view.fragment.Data",
+        name: "cap.app.view.fragment.Book",
         controller: this,
       }).then(function (dialog: Control | Control[]) {
         that.view?.addDependent(dialog as UI5Element);
