@@ -1,0 +1,33 @@
+<c:FragmentDefinition xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+>
+    <Dialog title="Create StandStill">
+        <beginButton>
+            <Button
+                text="Save"
+                type="Emphasized"
+                press="onSave"
+            />
+        </beginButton>
+        <endButton>
+            <Button
+                text="Cancel"
+                type="Transparent"
+                press="onClose"
+            />
+        </endButton>
+        <content>
+            <form:SimpleForm >
+            <Label text="Id"></Label>
+            <Input value="{data>/ID}"></Input>
+            <Label text="Title"></Label>
+            <Input value="{data>/title}"></Input>
+            <Label text="Author Id"></Label>
+            <Input value="{data>/author_ID}"></Input>
+            <Label text="Stock"></Label>
+            <Input value="{data>/stock}"></Input>
+            </form:SimpleForm>
+        </content>
+    </Dialog>
+</c:FragmentDefinition>
