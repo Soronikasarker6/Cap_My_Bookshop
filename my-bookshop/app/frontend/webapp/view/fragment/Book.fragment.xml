@@ -2,7 +2,7 @@
     xmlns="sap.m"
     xmlns:c="sap.ui.core"
 >
-    <Dialog title="Create StandStill">
+    <Dialog title="Create Book">
         <beginButton>
             <Button
                 text="Save"
