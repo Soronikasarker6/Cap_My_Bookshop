@@ -23,8 +23,16 @@
             <Input value="{data>/ID}"></Input>
             <Label text="Title"></Label>
             <Input value="{data>/title}"></Input>
-            <Label text="Author Id"></Label>
-            <Input value="{data>/author_ID}"></Input>
+            <Label text="Author"></Label>
+            <ComboBox selectedKey="{data>/author_ID}" items="{path:'/Authors'}">
+                <c:Item
+                    enabled="true"
+                    key="{ID}"
+                    text="{name}"
+                    textDirection="Inherit"
+                >  
+                </c:Item>
+            </ComboBox>
             <Label text="Stock"></Label>
             <Input value="{data>/stock}"></Input>
             </form:SimpleForm>

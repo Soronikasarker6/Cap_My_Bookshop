@@ -12,7 +12,9 @@
 			<content>
 				<table:Table
 					   id="bookshop"
-						rows="{path:'/Books'}"
+						rows="{path:'/Books',parameters: {
+							$expand: {author:{}}
+						}}"
 						enableBusyIndicator="true"
 						selectionMode="None"
 						paste="onPaste"
@@ -46,10 +48,10 @@
 								</table:template>
 							</table:Column>
 							<table:Column>
-								<Label text="Author ID" />
+								<Label text="Author Name" />
 								<table:template>
 									<Text
-										text="{author_ID}"
+										text="{author/name}"
 										wrapping="false"
 									/>
 								</table:template>
